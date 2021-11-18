@@ -34,7 +34,7 @@ class Controller {
         let profileData = {};
         postData.forEach(el => {
           if (el.id === userData.User.id) {
-            profileData.name = userData.name;
+            profileData.name = userData.formatName;
             profileData.profilepic = userData.profilepic;
           }
         });

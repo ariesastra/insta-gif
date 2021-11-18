@@ -18,7 +18,7 @@
                           class="rounded-circle" width="50px" height="50px" alt="profile picture">
                         <% } %>
                           <div class="d-flex align-items-center mx-3 fw-bold">
-                            <%= profileData.formatName %>
+                            <%= profileData.name %>
                           </div>
                   </div>
                   <img src="<%= el.gifUrl %> " class="card-img-top" alt="image">
@@ -47,7 +47,7 @@
                   <div class="d-flex align-items-center mx-3 w-75">
                     <div class="d-flex flex-column">
                       <div class="fw-bold">
-                        <%= userData.name %>
+                        <%= userData.formatName %>
                       </div>
                       <small>
                         <%= userData.User.email %>
