@@ -32,7 +32,6 @@ route.get('/post/delete/:id', ProfileController.postDelete);
 route.get('/profile/:id', ProfileController.getProfilePage);
 route.get('/profile/edit/:id', ProfileController.getEditProfile);
 route.post('/profile/edit/:id', ProfileController.postEditProfile);
-route.post('/user/edit/:id', ProfileController.userEdit);
 
 
 
