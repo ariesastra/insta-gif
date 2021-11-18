@@ -41,7 +41,7 @@ class Controller {
     res.render('pages/postGif')
   }
 
-  static getPostInstaGif(req, res) {
+  static postAddInstaGif(req, res) {
     const { title, gifUrl, content } = req.body
     const { userId } = req.session
 
