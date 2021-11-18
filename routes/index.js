@@ -33,4 +33,6 @@ route.get('/profile/:id', ProfileController.getProfilePage);
 route.get('/profile/edit/:id', ProfileController.getEditProfile);
 route.post('/profile/edit/:id', ProfileController.postEditProfile);
 
+route.get('/post/delete/:id', ProfileController.postDelete);
+
 module.exports = route;
