@@ -6,8 +6,8 @@ class ProfileController {
     console.log(req.params.id)
     let userData;
     Profile.findOne({
-      where :{
-        UserId : id
+      where: {
+        UserId: id
       },
       include: [{
         model: User,
@@ -17,15 +17,15 @@ class ProfileController {
       .then(user => {
         userData = user;
         //console.log(userData)
-        return Post.findAll({ 
-          where :{
-            UserId : id
+        return Post.findAll({
+          where: {
+            UserId: id
           },
           include: [{
             model: User,
             required: true
           }],
-        
+
         })
       })
       .then(post => {
@@ -59,8 +59,33 @@ class ProfileController {
   }
 
   static postEditProfile(req, res) {
-
-    res.send('post');
+    const { id } = req.params;
+    const {
+      profilepic,
+      name,
+      age,
+      address,
+      gender
+    } = req.body;
+    let data = {
+      name,
+      age,
+      profilepic,
+      address,
+      gender
+    }
+    console.log(data);
+    Profile.update(data, {
+      where: {
+        id: id
+      }
+    })
+      .then(data => {
+        res.redirect(`/profile/${id}`);
+      })
+      .catch(err => {
+        res.render('errorPages', { error: err });
+      });
   }
 }
 

@@ -4,10 +4,10 @@
       <div class="row">
         <!-- Profile Data -->
         <div class="col-6 mt-5">
-          <a href="/profile" class="btn btn-secondary mb-3">Back</a>
+          <a href="/profile/<%= userData[0].id %> " class="btn btn-secondary mb-3">Back</a>
           <h5 class="text-secondary">Edit Your Profile Info</h5>
           <hr class="w-100">
-          <form action="/profile/edit" method="post">
+          <form action="/profile/edit/<%= userData[0].id %>" method="post">
             <div class="mb-3 row">
               <label for="profileImag" class="col-sm-2 col-form-label">
                 <% if(userData[0].profilepic){ %>
@@ -20,7 +20,7 @@
                     <% } %>
               </label>
               <div class="col-sm-10 d-flex align-items-center">
-                <input type="file" class="form-control" id="profileImage" name="profilePic">
+                <input type="file" class="form-control" id="profileImage" name="profilepic">
               </div>
             </div>
             <div class="mb-3 row">
@@ -33,6 +33,27 @@
               <label for="age" class="col-sm-2 col-form-label">Age</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" id="age" name="age" value="<%= userData[0].age %> ">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="">
+                Gender
+              </label>
+              <div class="d-flex flex-row">
+                <div class="form-check mx-3">
+                  <input class="form-check-input" type="radio" name="gender" id="male" value="Male"
+                    <%=userData[0].gender==='Male' && 'checked' %>>
+                  <label class="form-check-label" for="male">
+                    Male
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="gender" id="female" value="Female"
+                    <%=userData[0].gender==='Female' && 'checked' %>>
+                  <label class="form-check-label" for="female">
+                    Female
+                  </label>
+                </div>
               </div>
             </div>
             <div class="mb-3 row">

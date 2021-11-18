@@ -14,17 +14,17 @@ module.exports = (sequelize, DataTypes) => {
       Profile.belongsTo(models.User)
     }
 
-    static formatName(){
+    static formatName() {
       if (this.gender === "Male") {
-          return this.name = "Mr. " + this.name
+        return this.name = "Mr. " + this.name
       } else {
         return this.name = "Mrs. " + this.name
       }
     }
-    
+
   };
   Profile.init({
-    name:  {
+    name: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: {
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    age:  {
+    age: {
       type: DataTypes.INTEGER,
       validate: {
         notEmpty: {
@@ -42,8 +42,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilepic: DataTypes.STRING,
     address: DataTypes.TEXT,
-    UserId : DataTypes.INTEGER,
-    gender : DataTypes.STRING
+    UserId: DataTypes.INTEGER,
+    gender: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Gender can not be empty"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Profile',
