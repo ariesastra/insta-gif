@@ -1,4 +1,4 @@
-const {User} = require('../models')
+const {User , Profile} = require('../models')
 
 class RegisterController {
     static getRegisterPage(req,res){
@@ -6,11 +6,16 @@ class RegisterController {
     }
 
     static postRegister(req,res){
-        // console.log(req.body)
         const {email, password} = req.body
+        const {name,age} = req.body
+        let dataUser 
         User.create({email, password})
         .then(user=>{
-            res.redirect('/login')
+            dataUser = user
+            return Profile.create({name,age,UserId: dataUser.id})
+            .then(profile=>{
+                res.redirect('/login')
+            })
         })
         .catch(err=>{
             res.send(err)

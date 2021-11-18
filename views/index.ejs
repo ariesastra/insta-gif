@@ -11,9 +11,11 @@
                 Full Name of Users
               </div>
             </div>
-            <img
-              src="https://media3.giphy.com/media/iIqmM5tTjmpOB9mpbn/giphy.gif?cid=ecf05e473ks56vz7jvdo6c5ygn5t3hkuro4rlab5g0non808&rid=giphy.gif&ct=g"
-              class="card-img-top" alt="image">
+            <% post.forEach(el=>{ %>
+              <img
+                src="<%= post.gifUrl%>"
+                class="card-img-top" alt="image">    
+           <% }) %>
             <div class="card-body">
               <h5 class="card-title">Ngoding till Imsak</h5>
               <p class="card-text">
