@@ -21,6 +21,13 @@ class Controller {
       .catch(err => {
         res.send(err)
       })
+  }
+
+  static postGifPage(req, res) {
+    res.render('pages/postGif')
+  }
+
+  static postInstaGif(req, res) {
 
   }
 }

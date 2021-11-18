@@ -15,11 +15,28 @@
                 </h3>
                 <h6 class="fst-normal text-secondary">ariesastra@gmail.com</h6>
                 <h6 class="fst-normal text-secondary">18 Years Old</h6>
+                <p class="text-secondary fw-light">
+                  Jl. Watubela 2 No. RF-3A, Rawa Mekar jaya, serpong Tangerang Selatan Banten.
+                </p>
               </div>
               <div class="col-4">
                 <a href="/profile/edit" class="btn btn-outline-secondary">
                   Edit Profile
                 </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 d-flex justify-content-start pb-3">
+            <div class="input-group justify-content-start">
+              <label class="input-group-text" for="inputGroupSelect01">Sorting By Date Add</label>
+              <div class="btn-group" role="group">
+                <input type="radio" class="btn-check" name="sortby" id="sortbyAsc" onchange="sortby()"
+                  autocomplete="off">
+                <label class="btn btn-outline-primary" for="sortbyAsc">Asc</label>
+
+                <input type="radio" class="btn-check" name="sortby" id="sortbyDesc" onchange="sortby()"
+                  autocomplete="off">
+                <label class="btn btn-outline-primary" for="sortbyDesc">Desc</label>
               </div>
             </div>
           </div>
@@ -46,5 +63,11 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const sortby = () => {
+
+      }
+    </script>
 
     <%- include('../partial/footer') %>

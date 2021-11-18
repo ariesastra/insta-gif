@@ -15,9 +15,9 @@ app.use(session({
   secret: 'top secret',
   resave: false,
   saveUninitialized: false,
-  cookie: { 
-    secure: false, 
-    sameSite : true
+  cookie: {
+    secure: false,
+    sameSite: true
   }
 }))
 
