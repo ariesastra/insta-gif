@@ -2,13 +2,14 @@ const express = require('express');
 const app = express();
 const session = require('express-session')
 const port = 3000;
+const path = require('path');
 
 // view engine
 app.set('view engine', 'ejs');
 // body parser
 app.use(express.urlencoded({ extended: true }));
 // using public resource
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '/public')));
 //session
 app.use(session({
   secret: 'top secret',

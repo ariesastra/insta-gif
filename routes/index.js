@@ -9,7 +9,7 @@ route.get('/login', LoginController.getLoginPage);
 route.post('/login', LoginController.postLogin);
 route.get('/register', RegisterController.getRegisterPage);
 route.post('/register', RegisterController.postRegister);
-route.get('/logout', LoginController.getLogOut)
+route.get('/logout', LoginController.getLogOut);
 
 route.use(function (req, res, next) {
   //console.log(req.session)

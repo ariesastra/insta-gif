@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         notEmpty: {
-          msg: "GifUrl of the post can not be empty"
+          msg: "You Need to Input GIF File"
         }
       }
     },
