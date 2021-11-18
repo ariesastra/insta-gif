@@ -3,6 +3,29 @@
     <div class="container">
       <div class="row">
         <div class="col-8 my-3">
+
+          <% dataUser.forEach(el=>{ %>
+            <div class="card mb-3">
+              <div class="card-header d-flex">
+                <img src="<%= el.Profile.profilepic %>" class="rounded-circle" width="50px"
+                  height="50px" alt="profile picture">
+                <div class="d-flex align-items-center mx-3 fw-bold">
+                 <%= el.Profile.name %>
+                </div>
+              </div>
+              <% el.Posts.forEach(post =>{ %>
+                <img
+                  src="<%= post.gifUrl %>"
+                  class="card-img-top" alt="image">
+                <div class="card-body">
+                  <h5 class="card-title"><%= post.title %></h5>
+                  <p class="card-text">
+                   <%= post.content %>
+                  </p>
+             <%  }) %>
+              </div>
+            </div>
+            <% }) %>
           <div class="card mb-3">
             <div class="card-header d-flex">
               <img src="http://www.indonesianjuniorgolf.com/uploads/player/416.jpeg" class="rounded-circle" width="50px"
@@ -11,11 +34,9 @@
                 Full Name of Users
               </div>
             </div>
-            <% post.forEach(el=>{ %>
-              <img
-                src="<%= post.gifUrl%>"
-                class="card-img-top" alt="image">    
-           <% }) %>
+            <img
+              src="https://media3.giphy.com/media/iIqmM5tTjmpOB9mpbn/giphy.gif?cid=ecf05e473ks56vz7jvdo6c5ygn5t3hkuro4rlab5g0non808&rid=giphy.gif&ct=g"
+              class="card-img-top" alt="image">
             <div class="card-body">
               <h5 class="card-title">Ngoding till Imsak</h5>
               <p class="card-text">

@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 class LoginController{
      static  getLoginPage(req,res){
          const {error} = req.query
-         console.log(req.query);
+        //  console.log(req.query);
          res.render('auth-pages/loginform', {err : error})
      }
 
