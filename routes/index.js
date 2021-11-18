@@ -28,11 +28,12 @@ route.get('/post', IndexController.getAddInstaGif);
 route.post('/post', IndexController.postAddInstaGif);
 // route.get('/post/edit/:id', IndexController.postInstaGif);
 // route.post('/post/edit/:id', IndexController.postInstaGif);
-// route.get('/post/delete/:id', IndexController.postInstaGif);
+route.get('/post/delete/:id', ProfileController.postDelete);
 route.get('/profile/:id', ProfileController.getProfilePage);
 route.get('/profile/edit/:id', ProfileController.getEditProfile);
 route.post('/profile/edit/:id', ProfileController.postEditProfile);
+route.post('/user/edit/:id', ProfileController.userEdit);
 
-route.get('/post/delete/:id', ProfileController.postDelete);
+
 
 module.exports = route;

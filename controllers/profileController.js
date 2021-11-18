@@ -8,11 +8,11 @@ class ProfileController {
     let order
 
     if (req.query.sort === 'ASC') {
-       order = [['createdAt', 'ASC']]
+      order = [['createdAt', 'ASC']]
     } else {
       order = [['createdAt', 'DESC']]
     }
-    
+
     let userData;
     Profile.findOne({
       where: {
@@ -98,21 +98,41 @@ class ProfileController {
       });
   }
 
-  static postDelete(req,res){
-   const {userId} = req.session
-  //  console.log(userId)
+  static postDelete(req, res) {
+    const { userId } = req.session
+    //  console.log(userId)
     let id = +req.params.id
-      Post.destroy({
-        where :{
-          id
-        }
-      })
-      .then(post=>{
+    Post.destroy({
+      where: {
+        id
+      }
+    })
+      .then(post => {
         res.redirect(`/profile/${userId}`)
       })
-      .catch(err=>{
-        res.send(err)
+      .catch(err => {
+        res.render('errorPages', { error: err });
+      });
+  }
+
+  static userEdit(req, res) {
+    const { email, password } = req.body;
+    const { id } = req.params;
+    User.update(
+      {
+        email,
+        password
+      }, {
+      where: {
+        id: id
+      }
+    })
+      .then(data => {
+        res.redirect(`/profile/${id}`)
       })
+      .catch(err => {
+        res.render('errorPages', { error: err });
+      });
   }
 }
 

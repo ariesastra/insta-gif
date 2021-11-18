@@ -42,8 +42,8 @@
               <div class="input-group justify-content-start">
                 <label class="input-group-text" for="inputGroupSelect01">Sorting By Date Add</label>
                 <div class="btn-group" role="group">
-                  <a href="/profile/<%= userData.id %>?sort=ASC"><button> ASC</button></a>
-                  <a href="/profile/<%= userData.id %>?sort=DESC"><button> DESC</button></a>
+                  <a href="/profile/<%= userData.id %>?sort=ASC" class="btn btn-outline-secondary">ASC</a>
+                  <a href="/profile/<%= userData.id %>?sort=DESC" class="btn btn-outline-secondary">DESC</a>
                 </div>
               </div>
             </div>
@@ -53,13 +53,15 @@
                 <% postData.forEach(el=> { %>
                   <div class="col-3 mb-3">
                     <div class="card" style="width: 18rem;">
-                      <img
-                        src="<%=el.gifUrl%>"
-                        class="card-img-top" class="card-img-top" alt="image">
+                      <img src="<%=el.gifUrl%>" class="card-img-top" class="card-img-top" alt="image">
                       <div class="card-body">
-                        <h5 class="card-title"><%= el.title %></h5>
-                        <p class="card-text"><%= el.content %></p>
-                        <a href="/post/edit/<%=el.id%>" class="btn btn-primary">Edit</a>
+                        <h5 class="card-title">
+                          <%= el.title %>
+                        </h5>
+                        <p class="card-text">
+                          <%= el.content %>
+                        </p>
+                        <!-- <a href="/post/edit/<%=el.id%>" class="btn btn-primary">Edit</a> -->
                         <a href="/post/delete/<%=el.id%>" class="btn btn-primary">Delete</a>
                       </div>
                     </div>
@@ -76,7 +78,7 @@
 
     <script>
       const sortby = () => {
-      
+
       }
     </script>
 
