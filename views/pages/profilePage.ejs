@@ -1,0 +1,50 @@
+<%- include('../partial/header') %>
+  <%- include('../partial/navigation') %>
+    <div class="container">
+      <div class="row">
+        <div class="min-vh-100">
+          <div class="col-12 h-25 d-flex align-items-center">
+            <div class="col-4 d-flex justify-content-end">
+              <img src="http://www.indonesianjuniorgolf.com/uploads/player/416.jpeg" alt="Profile Picture"
+                class="rounded-circle" width="150px" height="150px">
+            </div>
+            <div class="col-8 d-flex justify-content-start">
+              <div class="col-4 px-3">
+                <h3 class=".fs-3 text">
+                  User Full Name
+                </h3>
+                <h6 class="fst-normal text-secondary">ariesastra@gmail.com</h6>
+                <h6 class="fst-normal text-secondary">18 Years Old</h6>
+              </div>
+              <div class="col-4">
+                <a href="/profile/edit" class="btn btn-outline-secondary">
+                  Edit Profile
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <% for (let index=0; index < 5; index++){ %>
+                <div class="col-3 mb-3">
+                  <div class="card" style="width: 18rem;">
+                    <img
+                      src="https://media1.giphy.com/media/MGdfeiKtEiEPS/giphy.gif?cid=ecf05e47v4vuupdx525d4vbpvowqe247yk88frt23lrr1duj&rid=giphy.gif&ct=g"
+                      class="card-img-top" class="card-img-top" alt="image">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                        the
+                        card's content.</p>
+                      <a href="/post/edit/:id" class="btn btn-primary">Edit</a>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partial/footer') %>
