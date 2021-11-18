@@ -12,15 +12,17 @@ app.use(express.urlencoded({ extended: true }));
 // using public resource
 app.use(express.static('public'));
 // upload file
-app.use(upload);
+// app.use(upload);
 //session
+
 app.use(session({
   secret: 'top secret',
   resave: false,
   saveUninitialized: false,
   cookie: {
     secure: false,
-    sameSite: true
+    sameSite: true,
+    maxAge: 30 * 24 * 3600 * 1000
   }
 }))
 
