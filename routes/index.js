@@ -22,12 +22,12 @@ route.use(function (req, res, next) {
 
 route.get('/', IndexController.getInstaGif);
 route.get('/post', IndexController.getAddInstaGif);
-route.post('/post', IndexController.getPostInstaGif);
+route.post('/post', IndexController.postAddInstaGif);
 // route.get('/post/edit/:id', IndexController.postInstaGif);
 // route.post('/post/edit/:id', IndexController.postInstaGif);
 // route.get('/post/delete/:id', IndexController.postInstaGif);
 route.get('/profile', ProfileController.getProfilePage);
-route.get('/profile/edit', ProfileController.getEditProfile);
-route.post('/profile/edit', ProfileController.postEditProfile);
+route.get('/profile/edit/:id', ProfileController.getEditProfile);
+route.post('/profile/edit/:id', ProfileController.postEditProfile);
 
 module.exports = route;
