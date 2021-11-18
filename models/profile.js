@@ -14,13 +14,13 @@ module.exports = (sequelize, DataTypes) => {
       Profile.belongsTo(models.User)
     }
 
-    static formatName() {
+    get formatName(){
       if (this.gender === "Male") {
-        return this.name = "Mr. " + this.name
+          return 'Mr.'+this.name
       } else {
-        return this.name = "Mrs. " + this.name
+          return 'Mrs.'+this.name
       }
-    }
+  }
 
   };
   Profile.init({
