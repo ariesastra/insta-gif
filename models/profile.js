@@ -13,6 +13,15 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Profile.belongsTo(models.User)
     }
+
+    static formatName(){
+      if (this.gender === "Male") {
+          return this.name = "Mr. " + this.name
+      } else {
+        return this.name = "Mrs. " + this.name
+      }
+    }
+    
   };
   Profile.init({
     name:  {
@@ -33,7 +42,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     profilepic: DataTypes.STRING,
     address: DataTypes.TEXT,
-    UserId : DataTypes.INTEGER
+    UserId : DataTypes.INTEGER,
+    gender : DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Profile',
