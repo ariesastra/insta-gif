@@ -2,25 +2,31 @@ const { User, Post, Profile } = require('../models');
 
 class Controller {
   static getInstaGif(req, res) {
-    let dataUser
-    User.findAll({
+    let userData;
+    Profile.findAll({
       include: [{
-        model: Profile,
+        model: User,
         required: true
-      }, {
-        model: Post,
-        required: true
-      }], order: [
-        ['id', 'DESC']
-      ],
+      }]
     })
       .then(user => {
-        dataUser = user
-        res.render('index', { dataUser })
+        userData = user;
+        return Post.findAll({
+          include: [{
+            model: User,
+            required: true
+          }]
+        })
+      })
+      .then(post => {
+        let postData = post
+        console.log(userData, postData);
+        res.render('index', { userData, postData });
       })
       .catch(err => {
-        res.send(err)
+        res.render('errorPages', { error: err });
       })
+
   }
 
   static postGifPage(req, res) {
@@ -31,22 +37,22 @@ class Controller {
 
   }
 
-  static getAddInstaGif(req,res){
+  static getAddInstaGif(req, res) {
     res.render('pages/postGif')
   }
 
-  static getPostInstaGif(req,res){
-     const {title,gifUrl,content} = req.body
-     const {userId} = req.session
-     console.log(userId)
-     Post.create({title,gifUrl,content, UserId : userId})
-     .then(post=>{
-       res.redirect('/')
-     })
-     .catch(err=>{
-       res.send(err)
-     })
-     
+  static getPostInstaGif(req, res) {
+    const { title, gifUrl, content } = req.body
+    const { userId } = req.session
+    console.log(userId)
+    Post.create({ title, gifUrl, content, UserId: userId })
+      .then(post => {
+        res.redirect('/')
+      })
+      .catch(err => {
+        res.send(err)
+      })
+
   }
 
 }

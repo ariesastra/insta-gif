@@ -3,63 +3,79 @@
     <div class="container">
       <div class="row">
         <div class="min-vh-100">
+          <!-- Profile Feed -->
           <div class="col-12 h-25 d-flex align-items-center">
             <div class="col-4 d-flex justify-content-end">
-              <img src="http://www.indonesianjuniorgolf.com/uploads/player/416.jpeg" alt="Profile Picture"
-                class="rounded-circle" width="150px" height="150px">
+              <% if(userData[0].profilepic){ %>
+                <img src="<%= userData[0].profilepic %>" class="rounded-circle" width="150px" height="150px"
+                  alt="profile picture" />
+                <% } else { %>
+                  <img
+                    src=" https://media2.giphy.com/media/aq73HZM0NQDa8/giphy.gif?cid=ecf05e470529a6ip2kv95syv8lh34253t04uvz8i2sfcukpo&rid=giphy.gif&ct=g"
+                    class="rounded-circle" width="150px" height="150px" alt="profile picture">
+                  <% } %>
             </div>
             <div class="col-8 d-flex justify-content-start">
               <div class="col-4 px-3">
                 <h3 class=".fs-3 text">
-                  User Full Name
+                  <%= userData[0].name %>
                 </h3>
-                <h6 class="fst-normal text-secondary">ariesastra@gmail.com</h6>
-                <h6 class="fst-normal text-secondary">18 Years Old</h6>
+                <h6 class="fst-normal text-secondary">
+                  <%= userData[0].User.email %>
+                </h6>
+                <h6 class="fst-normal text-secondary">
+                  <%= userData[0].age %> Years Old
+                </h6>
                 <p class="text-secondary fw-light">
-                  Jl. Watubela 2 No. RF-3A, Rawa Mekar jaya, serpong Tangerang Selatan Banten.
+                  <%= userData[0].address %>
                 </p>
               </div>
               <div class="col-4">
-                <a href="/profile/edit" class="btn btn-outline-secondary">
+                <a href="/profile/edit/<%= userData[0].id %>" class="btn btn-outline-secondary">
                   Edit Profile
                 </a>
               </div>
             </div>
           </div>
-          <div class="col-6 d-flex justify-content-start pb-3">
-            <div class="input-group justify-content-start">
-              <label class="input-group-text" for="inputGroupSelect01">Sorting By Date Add</label>
-              <div class="btn-group" role="group">
-                <input type="radio" class="btn-check" name="sortby" id="sortbyAsc" onchange="sortby()"
-                  autocomplete="off">
-                <label class="btn btn-outline-primary" for="sortbyAsc">Asc</label>
+          <% if(postData){ %>
+            <div class="col-6 d-flex justify-content-start pb-3">
+              <div class="input-group justify-content-start">
+                <label class="input-group-text" for="inputGroupSelect01">Sorting By Date Add</label>
+                <div class="btn-group" role="group">
+                  <input type="radio" class="btn-check" name="sortby" id="sortbyAsc" onchange="sortby()"
+                    autocomplete="off">
+                  <label class="btn btn-outline-primary" for="sortbyAsc">Asc</label>
 
-                <input type="radio" class="btn-check" name="sortby" id="sortbyDesc" onchange="sortby()"
-                  autocomplete="off">
-                <label class="btn btn-outline-primary" for="sortbyDesc">Desc</label>
+                  <input type="radio" class="btn-check" name="sortby" id="sortbyDesc" onchange="sortby()"
+                    autocomplete="off">
+                  <label class="btn btn-outline-primary" for="sortbyDesc">Desc</label>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-12">
-            <div class="row">
-              <% for (let index=0; index < 5; index++){ %>
-                <div class="col-3 mb-3">
-                  <div class="card" style="width: 18rem;">
-                    <img
-                      src="https://media1.giphy.com/media/MGdfeiKtEiEPS/giphy.gif?cid=ecf05e47v4vuupdx525d4vbpvowqe247yk88frt23lrr1duj&rid=giphy.gif&ct=g"
-                      class="card-img-top" class="card-img-top" alt="image">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                        the
-                        card's content.</p>
-                      <a href="/post/edit/:id" class="btn btn-primary">Edit</a>
+            <!-- Post Feed -->
+            <div class="col-12">
+              <div class="row">
+                <% postData.forEach(el=> { %>
+                  <div class="col-3 mb-3">
+                    <div class="card" style="width: 18rem;">
+                      <img
+                        src="https://media1.giphy.com/media/MGdfeiKtEiEPS/giphy.gif?cid=ecf05e47v4vuupdx525d4vbpvowqe247yk88frt23lrr1duj&rid=giphy.gif&ct=g"
+                        class="card-img-top" class="card-img-top" alt="image">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                          the
+                          card's content.</p>
+                        <a href="/post/edit/:id" class="btn btn-primary">Edit</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <% } %>
+                  <% }); %>
+              </div>
             </div>
-          </div>
+            <% } else { %>
+              <h2 class="d-flex justify-content-center">Currently No Post of GIF</h2>
+              <% } %>
         </div>
       </div>
     </div>

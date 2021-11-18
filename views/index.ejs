@@ -3,105 +3,66 @@
     <div class="container">
       <div class="row">
         <div class="col-8 my-3">
-          <% dataUser.forEach(el=>{ %>
-            <div class="card mb-3">
-              <div class="card-header d-flex">
-                <img src="<%= el.Profile.profilepic %>" class="rounded-circle" width="50px" height="50px"
-                  alt="profile picture">
-                <div class="d-flex align-items-center mx-3 fw-bold">
-                  <%= el.Profile.name %>
-                </div>
-              </div>
-              <% el.Posts.forEach(post=>{ %>
-                <img src="<%= post.gifUrl %>" class="card-img-top" alt="image">
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <%= post.title %>
-                  </h5>
-                  <p class="card-text">
-                    <%= post.content %>
-                  </p>
-                  <% }) %>
-                </div>
-            </div>
-            <% }) %>
-
-              <div class="card mb-3">
-                <div class="card-header d-flex">
-                  <img src="http://www.indonesianjuniorgolf.com/uploads/player/416.jpeg" class="rounded-circle"
-                    width="50px" height="50px" alt="profile picture">
-                  <div class="d-flex align-items-center mx-3 fw-bold">
-                    Full Name of Users
+          <% if(postData.length < 1){ %>
+            <h3 class="d-flex justify-content-center">Currently Have No Feed</h3>
+            <% } %>
+              <% postData.forEach(el=> { %>
+                <div class="card mb-3">
+                  <div class="card-header d-flex">
+                    <img src="http://www.indonesianjuniorgolf.com/uploads/player/416.jpeg" class="rounded-circle"
+                      width="50px" height="50px" alt="profile picture">
+                    <div class="d-flex align-items-center mx-3 fw-bold">
+                      Full Name of Users
+                    </div>
+                  </div>
+                  <img
+                    src="https://media1.giphy.com/media/dlMIwDQAxXn1K/giphy.gif?cid=ecf05e47gcq9kwdwca94wvsi5ajf78di0apoa2u6nuruffem&rid=giphy.gif&ct=g"
+                    class="card-img-top" alt="image">
+                  <div class="card-body">
+                    <h5 class="card-title">Kita Hamba sahaya kalo ngoding</h5>
+                    <p class="card-text">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore
+                      et
+                      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                      aliquip
+                      ex
+                      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+                      eu
+                      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                      deserunt
+                      mollit anim id est laborum
+                    </p>
                   </div>
                 </div>
-                <img
-                  src="https://media1.giphy.com/media/MGdfeiKtEiEPS/giphy.gif?cid=ecf05e47v4vuupdx525d4vbpvowqe247yk88frt23lrr1duj&rid=giphy.gif&ct=g"
-                  class="card-img-top" alt="image">
-                <div class="card-body">
-                  <h5 class="card-title">Jovan & Tondiki kalo ngoding :)</h5>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex
-                    ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                    eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt
-                    mollit anim id est laborum
-                  </p>
-                </div>
-              </div>
-              <div class="card mb-3">
-                <div class="card-header d-flex">
-                  <img src="http://www.indonesianjuniorgolf.com/uploads/player/416.jpeg" class="rounded-circle"
-                    width="50px" height="50px" alt="profile picture">
-                  <div class="d-flex align-items-center mx-3 fw-bold">
-                    Full Name of Users
-                  </div>
-                </div>
-                <img
-                  src="https://media1.giphy.com/media/dlMIwDQAxXn1K/giphy.gif?cid=ecf05e47gcq9kwdwca94wvsi5ajf78di0apoa2u6nuruffem&rid=giphy.gif&ct=g"
-                  class="card-img-top" alt="image">
-                <div class="card-body">
-                  <h5 class="card-title">Kita Hamba sahaya kalo ngoding</h5>
-                  <p class="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex
-                    ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                    eu
-                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt
-                    mollit anim id est laborum
-                  </p>
-                </div>
-              </div>
+                <% }) %>
         </div>
         <div class="col-4 my-3">
           <div class="d-flex bg-light">
-            <img src="http://www.indonesianjuniorgolf.com/uploads/player/416.jpeg" class="rounded-circle" width="75px"
-              height="75px" alt="profile picture">
-            <div class="d-flex align-items-center mx-3 w-75">
-              <div class="d-flex flex-column">
-                <div class="fw-bold">
-                  Full Name
-                </div>
-                <small>email@email.com</small>
-              </div>
-              <div class="ms-auto">
-                <a href="/profile" class="btn btn-outline-secondary">Profile</a>
-              </div>
-            </div>
+            <% if(userData[0].profilepic){ %>
+              <img src="<%= userData[0].profilepic %>" class="rounded-circle" width="75px" height="75px"
+                alt="profile picture" />
+              <% } else { %>
+                <img
+                  src=" https://media2.giphy.com/media/aq73HZM0NQDa8/giphy.gif?cid=ecf05e470529a6ip2kv95syv8lh34253t04uvz8i2sfcukpo&rid=giphy.gif&ct=g"
+                  class="rounded-circle" width="75px" height="75px" alt="profile picture">
+                <% } %>
+                  <div class="d-flex align-items-center mx-3 w-75">
+                    <div class="d-flex flex-column">
+                      <div class="fw-bold">
+                        <%= userData[0].name %>
+                      </div>
+                      <small>
+                        <%= userData[0].User.email %>
+                      </small>
+                    </div>
+                    <div class="ms-auto">
+                      <a href="/profile" class="btn btn-outline-secondary">Profile</a>
+                    </div>
+                  </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Comment -->
 
     <%- include('partial/footer') %>

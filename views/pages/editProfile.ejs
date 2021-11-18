@@ -2,6 +2,7 @@
   <%- include('../partial/navigation') %>
     <div class="container">
       <div class="row">
+        <!-- Profile Data -->
         <div class="col-6 mt-5">
           <a href="/profile" class="btn btn-secondary mb-3">Back</a>
           <h5 class="text-secondary">Edit Your Profile Info</h5>
@@ -9,23 +10,29 @@
           <form action="/profile/edit" method="post">
             <div class="mb-3 row">
               <label for="profileImag" class="col-sm-2 col-form-label">
-                <img src="http://www.indonesianjuniorgolf.com/uploads/player/416.jpeg" class="rounded-circle"
-                  alt="Profiile Picture" width="50px" height="50px">
+                <% if(userData[0].profilepic){ %>
+                  <img src="<%= userData[0].profilepic %>" class="rounded-circle" width="50px" height="50px"
+                    alt="profile picture" />
+                  <% } else { %>
+                    <img
+                      src=" https://media2.giphy.com/media/aq73HZM0NQDa8/giphy.gif?cid=ecf05e470529a6ip2kv95syv8lh34253t04uvz8i2sfcukpo&rid=giphy.gif&ct=g"
+                      class="rounded-circle" width="50px" height="50px" alt="profile picture">
+                    <% } %>
               </label>
               <div class="col-sm-10 d-flex align-items-center">
-                <input type="file" class="form-control" id="profileImag" name="profilePic">
+                <input type="file" class="form-control" id="profileImage" name="profilePic">
               </div>
             </div>
             <div class="mb-3 row">
               <label for="fullName" class="col-sm-2 col-form-label">Full Name</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="fullName" name="name" value="">
+                <input type="text" class="form-control" id="fullName" name="name" value="<%= userData[0].name %> ">
               </div>
             </div>
             <div class="mb-3 row">
               <label for="age" class="col-sm-2 col-form-label">Age</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="age" name="age" value="">
+                <input type="text" class="form-control" id="age" name="age" value="<%= userData[0].age %> ">
               </div>
             </div>
             <div class="mb-3 row">
@@ -34,7 +41,9 @@
                 <span class="fw-light">*Optional</span>
               </label>
               <div class="col-sm-10">
-                <textarea class="form-control" id="address" rows="3" name="address"></textarea>
+                <textarea class="form-control" id="address" rows="3" name="address">
+                  <%= userData[0].address %> 
+                </textarea>
               </div>
             </div>
             <div class="d-flex justify-content-center">
@@ -42,6 +51,7 @@
             </div>
           </form>
         </div>
+        <!-- User Data -->
         <div class="col-6 mt-5">
           <h5 class="text-secondary mt-5">Edit Your Account</h5>
           <hr class="w-100">
