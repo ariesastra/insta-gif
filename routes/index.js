@@ -3,6 +3,7 @@ const IndexController = require('../controllers');
 const LoginController = require('../controllers/loginController');
 const RegisterController = require('../controllers/registerController');
 const ProfileController = require('../controllers/profileController');
+const fileUpload = require('express-fileupload');
 
 route.get('/login', LoginController.getLoginPage);
 route.post('/login', LoginController.postLogin);
@@ -20,6 +21,8 @@ route.use(function (req, res, next) {
   }
 })
 
+// For Upload
+route.use(fileUpload());
 route.get('/', IndexController.getInstaGif);
 route.get('/post', IndexController.getAddInstaGif);
 route.post('/post', IndexController.postAddInstaGif);

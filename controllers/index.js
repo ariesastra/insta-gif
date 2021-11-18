@@ -38,24 +38,39 @@ class Controller {
   }
 
   static getAddInstaGif(req, res) {
-    res.render('pages/postGif')
+    res.render('pages/postGif', { err: null })
   }
 
   static postAddInstaGif(req, res) {
-    const { title, gifUrl, content } = req.body
-    const { userId } = req.session
+    let gifFile;
+    let uploadPath;
+    const { title, gifUrl, content } = req.body;
+    const { userId } = req.session;
 
-    console.log(req.files.gifUrl);
-    res.sendFile(__dirname);
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send('No files were uploaded.');
+    }
+    console.log(req.files.gifFile);
+    // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+    gifFile = req.files.gifFile;
+    uploadPath = __dirname + '/public/uploads/' + gifFile.name;
 
-    console.log(userId)
-    Post.create({ title, gifUrl, content, UserId: userId })
-      .then(post => {
-        res.redirect('/')
-      })
-      .catch(err => {
-        res.send(err)
-      })
+    // Use the mv() method to place the file somewhere on your server
+    gifFile.mv(uploadPath, function (err) {
+      if (err)
+        return res.status(500).send(err);
+
+      res.send('File uploaded!');
+    });
+
+    // console.log(userId)
+    // Post.create({ title, gifUrl, content, UserId: userId })
+    //   .then(post => {
+    //     res.redirect('/')
+    //   })
+    //   .catch(err => {
+    //     res.send(err)
+    //   })
 
   }
 

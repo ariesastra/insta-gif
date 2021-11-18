@@ -6,7 +6,9 @@
           <div class="col-6 mt-5">
             <a href="/profile" class="btn btn-secondary mb-3">Back</a>
             <h5 class="text-secondary">Submit Your Post</h5>
-            <p><%= err %></p> 
+            <p>
+              <%= err %>
+            </p>
             <hr class="w-100">
             <form action="/post" method="post" enctype="multipart/form-data">
               <div class="mb-3 row">
@@ -14,7 +16,7 @@
                   Your Gif
                 </label>
                 <div class="col-sm-10 d-flex align-items-center">
-                  <input type="file" class="form-control" id="gifUrl" name="gifUrl">
+                  <input type="file" class="form-control" id="gifUrl" name="gifFile">
                 </div>
               </div>
               <div class="mb-3 row">

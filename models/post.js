@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Post.init({
-    title:  {
+    title: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: {
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    gifUrl:  {
+    gifUrl: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: {
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    content:  {
+    content: {
       type: DataTypes.TEXT,
       validate: {
         notEmpty: {
@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    UserId : DataTypes.INTEGER
+    UserId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Post',
