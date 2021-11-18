@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const session = require('express-session')
+const upload = require('express-fileupload');
 
 const port = 3000;
 
@@ -10,6 +11,8 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 // using public resource
 app.use(express.static('public'));
+// upload file
+app.use(upload);
 //session
 app.use(session({
   secret: 'top secret',

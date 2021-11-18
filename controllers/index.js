@@ -44,6 +44,10 @@ class Controller {
   static getPostInstaGif(req, res) {
     const { title, gifUrl, content } = req.body
     const { userId } = req.session
+
+    console.log(req.files.gifUrl);
+    res.sendFile(__dirname);
+
     console.log(userId)
     Post.create({ title, gifUrl, content, UserId: userId })
       .then(post => {
