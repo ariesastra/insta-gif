@@ -22,7 +22,7 @@ route.use(function (req, res, next) {
 
 route.get('/', IndexController.getInstaGif);
 route.get('/post', IndexController.getAddInstaGif);
-route.post('/post', IndexController.getPostInstaGif);
+route.post('/post', IndexController.postAddInstaGif);
 // route.get('/post/edit/:id', IndexController.postInstaGif);
 // route.post('/post/edit/:id', IndexController.postInstaGif);
 // route.get('/post/delete/:id', IndexController.postInstaGif);
