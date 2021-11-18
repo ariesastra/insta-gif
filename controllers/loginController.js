@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 class LoginController{
      static  getLoginPage(req,res){
          const {error} = req.query
-         console.log(req.query);
+        //  console.log(req.query);
          res.render('auth-pages/loginform', {err : error})
      }
 
@@ -19,8 +19,10 @@ class LoginController{
             //  console.log(user)
             if (user) {
                 let validPassword = bcrypt.compareSync(password, user.password)
-                console.log(validPassword)
+                
                 if (validPassword) {
+                    req.session.userId = user.id
+
                     return res.redirect('/')
                 } else {
                     const errmessage = (`Invalid User / password`)
@@ -34,6 +36,10 @@ class LoginController{
          .catch(err=>{
              res.send(err)
          })
+     }
+
+     static getLogOut(req,res){
+         
      }
 }
 

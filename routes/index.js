@@ -18,4 +18,16 @@ route.get('/profile', ProfileController.getProfilePage);
 route.get('/profile/edit', ProfileController.getEditProfile);
 route.post('/profile/edit', ProfileController.postEditProfile);
 
+route.use(function (req, res, next) {
+  console.log(req.session)
+  if (!req.session.userId) {
+    const error = `You need to login!`
+    res.redirect(`/login?error=${error}`)
+  } else {
+    next()
+  }
+})
+
+route.get('/', IndexController.getInstaGif);
+
 module.exports = route;
