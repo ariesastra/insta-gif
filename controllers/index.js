@@ -30,6 +30,25 @@ class Controller {
   static postInstaGif(req, res) {
 
   }
+
+  static getAddInstaGif(req,res){
+    res.render('pages/postGif')
+  }
+
+  static getPostInstaGif(req,res){
+     const {title,gifUrl,content} = req.body
+     const {userId} = req.session
+     console.log(userId)
+     Post.create({title,gifUrl,content, UserId : userId})
+     .then(post=>{
+       res.redirect('/')
+     })
+     .catch(err=>{
+       res.send(err)
+     })
+     
+  }
+
 }
 
 module.exports = Controller;

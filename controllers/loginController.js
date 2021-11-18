@@ -25,11 +25,11 @@ class LoginController{
 
                     return res.redirect('/')
                 } else {
-                    const errmessage = (`Invalid User / password`)
+                    const errmessage = (`Invalid Password`)
                     return res.redirect(`/login?error=${errmessage}`)
                 }
             } else {
-                const errmessage = (`Invalid User / password`)
+                const errmessage = (`Invalid Email & Password`)
                 return res.redirect(`/login?error=${errmessage}`)
             }
          })
@@ -39,7 +39,13 @@ class LoginController{
      }
 
      static getLogOut(req,res){
-         
+         req.session.destroy((err)=>{
+             if (err) {
+                 res.send(err)
+             } else {
+                 res.redirect('/login')
+             }
+         })
      }
 }
 
