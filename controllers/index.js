@@ -32,7 +32,8 @@ class Controller {
   }
 
   static getAddInstaGif(req,res){
-    res.render('pages/postGif')
+    const { err } = req.query
+    res.render('pages/postGif', {err})
   }
 
   static getPostInstaGif(req,res){
@@ -44,7 +45,13 @@ class Controller {
        res.redirect('/')
      })
      .catch(err=>{
-       res.send(err)
+      if (err.name === 'SequelizeValidationError') {
+        let errMessage = err.errors.map(item => item.message)
+        res.redirect(`/post?err=${errMessage}`)
+    } else {
+        console.log(err);
+        res.send(err)
+    }
      })
      
   }

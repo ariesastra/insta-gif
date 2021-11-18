@@ -8,17 +8,16 @@ route.get('/login', LoginController.getLoginPage);
 route.post('/login', LoginController.postLogin);
 route.get('/register', RegisterController.getRegisterPage);
 route.post('/register', RegisterController.postRegister);
-route.get('/logout',LoginController.getLogOut)
-
+route.get('/logout', LoginController.getLogOut)
 
 route.use(function (req, res, next) {
-    //console.log(req.session)
-    if (!req.session.userId) {
-        const error = `You need to login!`
-        res.redirect(`/login?error=${error}`)
-    } else {
-        next()
-    }
+  //console.log(req.session)
+  if (!req.session.userId) {
+    const error = `You need to login!`
+    res.redirect(`/login?error=${error}`)
+  } else {
+    next()
+  }
 })
 
 route.get('/', IndexController.getInstaGif);
@@ -30,9 +29,5 @@ route.post('/post', IndexController.getPostInstaGif);
 route.get('/profile', ProfileController.getProfilePage);
 route.get('/profile/edit', ProfileController.getEditProfile);
 route.post('/profile/edit', ProfileController.postEditProfile);
-
-
-
-
 
 module.exports = route;

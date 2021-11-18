@@ -15,9 +15,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Post.init({
-    title: DataTypes.STRING,
-    gifUrl: DataTypes.STRING,
-    content: DataTypes.TEXT,
+    title:  {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "Title of the post can not be empty"
+        }
+      }
+    },
+    gifUrl:  {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: "GifUrl of the post can not be empty"
+        }
+      }
+    },
+    content:  {
+      type: DataTypes.TEXT,
+      validate: {
+        notEmpty: {
+          msg: "Content of the post can not be empty"
+        }
+      }
+    },
     UserId : DataTypes.INTEGER
   }, {
     sequelize,
