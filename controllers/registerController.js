@@ -3,8 +3,10 @@ const { User, Profile } = require('../models')
 class RegisterController {
     static getRegisterPage(req, res) {
         const { err } = req.query
+        let error = '';
+        if (err) error = err.split(',');
 
-        res.render('auth-pages/registerform', { err: err.split(',') })
+        res.render('auth-pages/registerform', { err: error })
     }
 
     static postRegister(req, res) {
