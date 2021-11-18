@@ -7,7 +7,7 @@ const ProfileController = require('../controllers/profileController');
 route.get('/', IndexController.getInstaGif);
 // route.post('/post', IndexController.postInstaGif);
 route.get('/login', LoginController.getLoginPage);
-// route.post('/login', LoginController.postLogin);
+route.post('/login', LoginController.postLogin);
 route.get('/register', RegisterController.getRegisterPage);
 route.post('/register', RegisterController.postRegister);
 // route.get('/profile', ProfileController.getProfilePage);
