@@ -87,9 +87,9 @@ class Controller {
           Controller.getAddInstaGif(req, res);
         }
         // localhost
-        let urlGif = `http://localhost:3000/uploads/${gifFile.name}`;
-        // production
         // let urlGif = `http://localhost:3000/uploads/${gifFile.name}`;
+        // production
+        let urlGif = `https://gifku.herokuapp.com//uploads/${gifFile.name}`;
 
         Post.create({ title, gifUrl: urlGif, content, UserId: userId })
           .then(post => {
