@@ -42,13 +42,8 @@
               <div class="input-group justify-content-start">
                 <label class="input-group-text" for="inputGroupSelect01">Sorting By Date Add</label>
                 <div class="btn-group" role="group">
-                  <input type="radio" class="btn-check" name="sortby" id="sortbyAsc" onchange="sortby()"
-                    autocomplete="off">
-                  <label class="btn btn-outline-primary" for="sortbyAsc">Asc</label>
-
-                  <input type="radio" class="btn-check" name="sortby" id="sortbyDesc" onchange="sortby()"
-                    autocomplete="off">
-                  <label class="btn btn-outline-primary" for="sortbyDesc">Desc</label>
+                  <a href="/profile/<%= userData.id %>?sort=ASC"><button> ASC</button></a>
+                  <a href="/profile/<%= userData.id %>?sort=DESC"><button> DESC</button></a>
                 </div>
               </div>
             </div>
@@ -64,7 +59,8 @@
                       <div class="card-body">
                         <h5 class="card-title"><%= el.title %></h5>
                         <p class="card-text"><%= el.content %></p>
-                        <a href="/post/edit/:id" class="btn btn-primary">Edit</a>
+                        <a href="/post/edit/<%=el.id%>" class="btn btn-primary">Edit</a>
+                        <a href="/post/delete/<%=el.id%>" class="btn btn-primary">Delete</a>
                       </div>
                     </div>
                   </div>

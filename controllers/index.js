@@ -17,6 +17,7 @@ class Controller {
       }
     })
       .then(user => {
+        console.log(user)
         userData = user;
         return Post.findAll({
           include: [{

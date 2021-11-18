@@ -4,6 +4,15 @@ class ProfileController {
   static getProfilePage(req, res) {
     let id = +req.params.id
     console.log(req.params.id)
+
+    let order
+
+    if (req.query.sort === 'ASC') {
+       order = [['createdAt', 'ASC']]
+    } else {
+      order = [['createdAt', 'DESC']]
+    }
+    
     let userData;
     Profile.findOne({
       where :{
@@ -21,6 +30,7 @@ class ProfileController {
           where :{
             UserId : id
           },
+          order,
           include: [{
             model: User,
             required: true
@@ -30,7 +40,7 @@ class ProfileController {
       })
       .then(post => {
         let postData = post;
-        console.log(postData);
+        //console.log(postData);
         res.render('pages/profilePage', { userData, postData });
       })
       .catch(err => {
@@ -61,6 +71,23 @@ class ProfileController {
   static postEditProfile(req, res) {
 
     res.send('post');
+  }
+
+  static postDelete(req,res){
+   const {userId} = req.session
+  //  console.log(userId)
+    let id = +req.params.id
+      Post.destroy({
+        where :{
+          id
+        }
+      })
+      .then(post=>{
+        res.redirect(`/profile/${userId}`)
+      })
+      .catch(err=>{
+        res.send(err)
+      })
   }
 }
 
