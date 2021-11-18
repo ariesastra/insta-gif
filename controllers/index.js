@@ -20,7 +20,7 @@ class Controller {
       })
       .then(post => {
         let postData = post
-        console.log(userData, postData);
+        //console.log(userData, postData);
         res.render('index', { userData, postData });
       })
       .catch(err => {

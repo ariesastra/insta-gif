@@ -6,8 +6,8 @@
           <!-- Profile Feed -->
           <div class="col-12 h-25 d-flex align-items-center">
             <div class="col-4 d-flex justify-content-end">
-              <% if(userData[0].profilepic){ %>
-                <img src="<%= userData[0].profilepic %>" class="rounded-circle" width="150px" height="150px"
+              <% if(userData.profilepic){ %>
+                <img src="<%= userData.profilepic %>" class="rounded-circle" width="150px" height="150px"
                   alt="profile picture" />
                 <% } else { %>
                   <img
@@ -18,20 +18,20 @@
             <div class="col-8 d-flex justify-content-start">
               <div class="col-4 px-3">
                 <h3 class=".fs-3 text">
-                  <%= userData[0].name %>
+                  <%= userData.name %>
                 </h3>
                 <h6 class="fst-normal text-secondary">
-                  <%= userData[0].User.email %>
+                  <%= userData.User.email %>
                 </h6>
                 <h6 class="fst-normal text-secondary">
-                  <%= userData[0].age %> Years Old
+                  <%= userData.age %> Years Old
                 </h6>
                 <p class="text-secondary fw-light">
-                  <%= userData[0].address %>
+                  <%= userData.address %>
                 </p>
               </div>
               <div class="col-4">
-                <a href="/profile/edit/<%= userData[0].id %>" class="btn btn-outline-secondary">
+                <a href="/profile/edit/<%= userData.id %>" class="btn btn-outline-secondary">
                   Edit Profile
                 </a>
               </div>
@@ -59,13 +59,11 @@
                   <div class="col-3 mb-3">
                     <div class="card" style="width: 18rem;">
                       <img
-                        src="https://media1.giphy.com/media/MGdfeiKtEiEPS/giphy.gif?cid=ecf05e47v4vuupdx525d4vbpvowqe247yk88frt23lrr1duj&rid=giphy.gif&ct=g"
+                        src="<%=el.gifUrl%>"
                         class="card-img-top" class="card-img-top" alt="image">
                       <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                          the
-                          card's content.</p>
+                        <h5 class="card-title"><%= el.title %></h5>
+                        <p class="card-text"><%= el.content %></p>
                         <a href="/post/edit/:id" class="btn btn-primary">Edit</a>
                       </div>
                     </div>
@@ -82,7 +80,7 @@
 
     <script>
       const sortby = () => {
-
+      
       }
     </script>
 
