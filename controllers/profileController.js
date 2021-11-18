@@ -2,8 +2,13 @@ const { User, Post, Profile } = require('../models/index');
 
 class ProfileController {
   static getProfilePage(req, res) {
+    let id = +req.params.id
+    console.log(req.params.id)
     let userData;
-    Profile.findAll({
+    Profile.findOne({
+      where :{
+        UserId : id
+      },
       include: [{
         model: User,
         required: true
@@ -11,19 +16,21 @@ class ProfileController {
     })
       .then(user => {
         userData = user;
-        return Post.findOne({
+        //console.log(userData)
+        return Post.findAll({ 
+          where :{
+            UserId : id
+          },
           include: [{
             model: User,
             required: true
           }],
-          where: {
-            id: userData[0].id
-          }
+        
         })
       })
       .then(post => {
         let postData = post;
-        console.log(userData, postData);
+        console.log(postData);
         res.render('pages/profilePage', { userData, postData });
       })
       .catch(err => {
