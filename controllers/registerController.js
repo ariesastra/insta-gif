@@ -12,10 +12,10 @@ class RegisterController {
         User.create({email, password})
         .then(user=>{
             dataUser = user
-            return Profile.create({name,age,UserId: dataUser.id})
-            .then(profile=>{
-                res.redirect('/login')
-            })
+            return Profile.create({name,age,UserId: dataUser.id})    
+        })
+        .then(profile=>{
+            res.redirect('/login')
         })
         .catch(err=>{
             res.send(err)

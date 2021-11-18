@@ -6,13 +6,16 @@ class Controller {
     User.findAll({
       include :  [{
         model: Profile,
+        required: true
         }, {
         model: Post,
-    }]
+        required: true
+    }],  order: [
+      [ 'id' , 'DESC']
+    ],
     })
     .then(user=>{
        dataUser =user
-       console.log(dataUser[0].Posts[0].title)
        res.render('index',{dataUser})
         })
         .catch(err=>{
