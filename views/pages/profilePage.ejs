@@ -61,6 +61,9 @@
                         <p class="card-text">
                           <%= el.content %>
                         </p>
+                        <p class="card-text">
+                          <%= formatDate(el.createdAt) %>
+                        </p>
                         <!-- <a href="/post/edit/<%=el.id%>" class="btn btn-primary">Edit</a> -->
                         <a href="/post/delete/<%=el.id%>" class="btn btn-primary">Delete</a>
                       </div>

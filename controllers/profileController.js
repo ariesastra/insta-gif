@@ -1,4 +1,5 @@
 const { User, Post, Profile } = require('../models/index');
+const formatDate = require('../helpers/formatDate')
 
 class ProfileController {
   static getProfilePage(req, res) {
@@ -41,7 +42,7 @@ class ProfileController {
       .then(post => {
         let postData = post;
         //console.log(postData);
-        res.render('pages/profilePage', { userData, postData });
+        res.render('pages/profilePage', { userData, postData, formatDate});
       })
       .catch(err => {
         res.render('errorPages', { error: err });
